@@ -1,26 +1,36 @@
 <template>
-  <div class="container">
-    <HeroComponents />
-    <div style="height: 150px"></div>
-    <LargeCardDisplay
-      v-for="cardInfo in largeCardInfo"
-      :key="cardInfo.id"
-      :cardSection="cardInfo"
-    />
+  <div>
+    <Nav />
+    <div class="container">
+      <HeroComponents />
+      <div style="height: 150px" />
+      <LargeCardDisplay
+        v-for="cardInfo in largeCardInfo"
+        :key="cardInfo.id"
+        :cardSection="cardInfo"
+      />
+      <SmallCardDisplay
+        v-for="cardInfo in smallCardSections"
+        :key="cardInfo.id"
+        :cardsSection="cardInfo"
+      />
+    </div>
   </div>
 </template>
 
 <script>
 import HeroComponents from '~/components/HeroComponents.vue'
 import LargeCardDisplay from '~/components/LargeCardDisplay.vue'
-import { largeCardSections } from '@/assets/data.js'
+import Nav from '~/components/Nav.vue'
+import { largeCardSections, smallCardSections } from '@/assets/data.js'
 
 export default {
   name: 'IndexPage',
-  components: { HeroComponents, LargeCardDisplay },
+  components: { HeroComponents, LargeCardDisplay, Nav },
   data () {
     return {
-      largeCardInfo: largeCardSections
+      largeCardInfo: largeCardSections,
+      smallCardSections
     }
   }
 }
